@@ -27,9 +27,3 @@ jobs:
 
     - name: Run 02_generate_gme_financials.py
       run: python modules/02_generate_gme_financials.py
-
-    - name: Upload artifact  # Optional, if you need to save outputs
-      uses: actions/upload-artifact@v2
-      with:
-        name: daily-output
-        path: path/to/output/folder  # Adjust this path to where your scripts save data
