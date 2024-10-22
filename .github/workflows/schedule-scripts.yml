@@ -1,0 +1,35 @@
+name: Daily Python Script Execution
+
+on:
+  schedule:
+    - cron:  '0 22 * * *'  # This runs daily at 10 PM UTC, which is 5 PM CST
+
+jobs:
+  run-python-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'  # Specify your Python version
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+    - name: Run 01_generate_ticker_data.py
+      run: python modules/01_generate_ticker_data.py
+
+    - name: Run 02_generate_gme_financials.py
+      run: python modules/02_generate_gme_financials.py
+
+    - name: Upload artifact  # Optional, if you need to save outputs
+      uses: actions/upload-artifact@v2
+      with:
+        name: daily-output
+        path: path/to/output/folder  # Adjust this path to where your scripts save data
