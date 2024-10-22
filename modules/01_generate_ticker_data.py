@@ -14,18 +14,23 @@ gme_ticker_data_file_name = f'{gme_ticker_file_prefix}-{start_date}-to-{end_date
 #### UTILITY FUNCTIONS ####
 def generate_csv(df, file_prefix, file_name, remove_old=True):
     """
-    Save the DataFrame containing ticker data to a CSV file.
+    Save a DataFrame to a CSV file, optionally removing old related files.
 
-    This function creates a CSV file with the ticker data, ensures a clean environment
-    by removing any previous CSV files with similar naming, and provides feedback on 
-    where the data is saved.
+    This function performs the following tasks:
+    - Creates a CSV file in the specified directory with the provided data.
+    - Ensures a clean environment by removing old CSV files matching the `file_prefix` if `remove_old` is True.
+    - Provides feedback on where the data was saved.
 
     Parameters:
-    df_tickers (pd.DataFrame): DataFrame containing ticker data to be saved.
+    df (pd.DataFrame): DataFrame to be saved as CSV.
+    file_prefix (str): The prefix used for identifying old files to remove.
+    file_name (str): The name of the CSV file to be created.
+    remove_old (bool): If True, removes existing files with the given prefix. Defaults to True.
 
     Returns:
-    None: This function saves the DataFrame to disk and prints the path.
+    None: This function operates in-place, saving the DataFrame and removing files as needed.
     """
+    
     # Determine the path where data should be saved
     data_root = 'data'  # Assuming 'data' is the root folder for data
    
