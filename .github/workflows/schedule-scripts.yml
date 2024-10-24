@@ -30,7 +30,7 @@ jobs:
       run: |
         git config --local user.email "keeney.archadia@gmail.com"
         git config --local user.name "saint-vampirdus"
+        git remote set-url origin https://${{ secrets.ACTIONS_TOKEN }}@github.com/saint-vampirdus/GMERICA.git
         git add .
-        # Only commit if there are changes
         git diff-index --quiet HEAD || git commit -m "Automated update: $(date '+%Y-%m-%d %H:%M:%S')"
         git push
