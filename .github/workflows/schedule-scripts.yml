@@ -1,8 +1,6 @@
 name: Daily Python Script Execution
 
-on:
-  schedule:
-    - cron:  '0 22 * * *'  # This runs daily at 10 PM UTC, which is 5 PM CST
+on: push
 
 jobs:
   run-python-script:
