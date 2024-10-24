@@ -12,7 +12,7 @@ total_shares_file_name = f'{total_shares_file_prefix}-{start_date}-to-{end_date}
 sec_filings_file_prefix = 'gme-sec-filings'
 sec_filings_file_name = f'{sec_filings_file_prefix}-{start_date}-{end_date}.csv'
 quarterly_financials_file_prefix = 'gme-quarterly-financials'
-quarterly_financials_file_name = f'{quarterly_financials_file_prefix}-{start_date}-{end_date}.csv'
+quarterly_financials_file_name = f'{quarterly_financials_file_prefix}-{start_date}-to-{end_date}.csv'
 
 #### UTILITY FUNCTIONS ####
 def flatten_dict(d, parent_key='', sep='_'):
@@ -50,7 +50,7 @@ def generate_csv(df, file_prefix, file_name, remove_old=True):
     None: This function prints a message about where the data was saved.
     """
     # Determine the path where data should be saved
-    data_root = 'data'  # Assuming 'data' is the root folder for data
+    data_root = 'data/output'  # Assuming 'data' is the root folder for data
    
     if not os.path.exists(data_root):
         os.makedirs(data_root)
