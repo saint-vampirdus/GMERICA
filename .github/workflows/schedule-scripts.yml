@@ -1,6 +1,8 @@
 name: Daily Python Script Execution
 
-on: push
+on:
+  schedule:
+    - cron: '0 22 * * *'
 permissions:
   contents: write
 jobs:
