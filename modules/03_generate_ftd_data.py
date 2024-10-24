@@ -94,8 +94,9 @@ def generate_ftd_data(ticker_list):
                 for file in zip_ref.namelist():
                     with zip_ref.open(file) as csv_file:
                         df_ftd = pd.read_csv(csv_file, sep='|', encoding='ISO-8859-1', engine='python', usecols=keep_cols)
+                        df_ftd = df_ftd[df_ftd['SYMBOL'].isin(ticker_list)]
                         df_ftd_combined = pd.concat([df_ftd_combined, df_ftd], ignore_index=True)
-                        df_ftd_combined = df_ftd_combined[df_ftd_combined['SYMBOL'].isin(ticker_list)]
+                        
                         print(f"Processed {filename}")
         else:
             print(f"Skipping {filename} as it does not match the expected naming convention.")
