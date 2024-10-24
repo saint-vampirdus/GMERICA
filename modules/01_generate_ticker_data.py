@@ -8,7 +8,7 @@ import glob
 ticker_list = ['GME', 'XRT', 'FNDA', 'IWB', 'IWM', 'IJH', 'VTI', 'VBR', 'VXF']
 start_date = '2016-01-01'  # Start date of ticker data
 end_date = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')  # Pull in all data up to last close
-gme_ticker_file_prefix = 'ticker-data'
+gme_ticker_file_prefix = 'gme-stock-data'
 gme_ticker_data_file_name = f'{gme_ticker_file_prefix}-{start_date}-to-{end_date}.csv'
 
 #### UTILITY FUNCTIONS ####
@@ -32,7 +32,7 @@ def generate_csv(df, file_prefix, file_name, remove_old=True):
     """
     
     # Determine the path where data should be saved
-    data_root = 'data'  # Assuming 'data' is the root folder for data
+    data_root = 'data/output'  # Assuming 'data' is the root folder for data
    
     if not os.path.exists(data_root):
         os.makedirs(data_root)

@@ -31,7 +31,7 @@ jobs:
 
     - name: Commit and push changes
       run: |
-        git config --local user.email "keeney.archadia@gmail.com"
+        git config --local user.email "keeney.arcadia@gmail.com"
         git config --local user.name "saint-vampirdus"
         git add -A
         git diff-index --quiet HEAD || git commit -m "Automated update: $(date '+%Y-%m-%d %H:%M:%S')"
